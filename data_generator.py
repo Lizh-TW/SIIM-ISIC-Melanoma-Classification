@@ -3,6 +3,8 @@ import pandas as pd
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
+tf.random.set_seed(123)
+
 
 def parse_function(images):
 
@@ -20,8 +22,8 @@ if __name__ == '__main__':
     image_target = pd.read_csv('./datasets/train.csv')['target']
     x_0 = []
     x_1 = []
-    size_0 = 20000
-    size_1 = 5000
+    size_0 = 10000
+    size_1 = 1000
 
     for i in range(len(image_target)):
 
@@ -40,7 +42,9 @@ if __name__ == '__main__':
 
     g_data = np.append(x_0, x_1, axis=0)
     target = np.append(np.zeros(len(x_0)), np.ones(len(x_1)))
+
     print(g_data.shape)
     print(target.shape)
+
     np.save('./datasets/g_train_224_x', g_data)
     np.save('./datasets/g_train_224_y', target)
