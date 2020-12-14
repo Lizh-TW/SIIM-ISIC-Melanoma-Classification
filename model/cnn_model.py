@@ -24,7 +24,7 @@ def vgg16_net():
     return model
 
 
-def efficientnet_b1():
+def efficientnet_b0():
     inp = tf.keras.layers.Input(shape=(224, 224, 3))
     base = efn.EfficientNetB0(
         input_shape=(224, 224, 3),
